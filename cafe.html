@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Máquina de Café Animada</title>
+    <style>
+        /* ===== ESTILOS GENERALES ===== */
+        body {
+            background: linear-gradient(145deg, #f8f0e7 0%, #e0d6cc 100%);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Contenedor principal de la máquina */
+        .machine {
+            position: relative;
+            width: 360px;
+            height: 420px;
+            background: #ece2d7;
+            border-radius: 50px 50px 30px 30px;
+            box-shadow: 0 20px 30px rgba(0,0,0,0.2), inset 0 -5px 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+        }
+
+        /* ===== PARTES DE LA MÁQUINA ===== */
+        /* Panel superior con controles */
+        .top-panel {
+            width: 85%;
+            height: 50px;
+            background: #d5c4b3;
+            border-radius: 30px 30px 15px 15px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0 15px;
+            box-shadow: inset 0 -3px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Botón de encendido (con animación) */
+        .power-btn {
+            width: 30px;
+            height: 30px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px #fceaea, 0 3px 5px rgba(0,0,0,0.2);
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+
+        /* Pequeña pantalla LCD */
+        .screen {
+            width: 100px;
+            height: 30px;
+            background: #a7c5a1;
+            border-radius: 8px;
+            box-shadow: inset 0 0 5px #2d5a2a;
+            color: #2d4a2a;
+            font-weight: bold;
+            font-size: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Perilla/selector */
+        .perilla {
+            width: 25px;
+            height: 25px;
+            background: #237c3e;
+            border-radius: 50%;
+            box-shadow: inset -2px -2px 5px #6b5e52, inset 2px 2px 5px #fff6ed;
+        }
+
+        /* Cuerpo central */
+        .main-body {
+            position: relative;
+            width: 85%;
+            flex: 1;
+            margin-top: 15px;
+            background: #d9cec6;
+            border-radius: 30px 30px 20px 20px;
+            box-shadow: inset 0 0 0 2px #bfafa3, inset 0 -10px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Depósito de agua (parte superior izquierda) */
+        .water-tank {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 70px;
+            height: 90px;
+            background: #c9e2f0;
+            border-radius: 40% 40% 20px 20px;
+            border: 3px solid #9fb7c2;
+            box-shadow: inset -5px -5px 10px #8ea9b5, inset 5px 5px 10px #e5f4ff;
+            overflow: hidden;
+        }
+
+        /* Línea de agua (para simular nivel) */
+        .water-level {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 65%;
+            background: #49df6f;
+            border-radius: 0 0 15px 15px;
+            animation: wave 3s infinite ease-in-out;
+        }
+
+        /* Portafiltro / grupo de preparación */
+        .group-head {
+            position: absolute;
+            top: 40px;
+            right: 30px;
+            width: 60px;
+            height: 50px;
+            background: #533519;
+            border-radius: 30px 30px 10px 10px;
+            box-shadow: 0 5px 0 #7e6b5c, inset 0 2px 5px #efdbca;
+        }
+
+        /* La jarra (cafetera) */
+        .carafe {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            width: 90px;
+            height: 120px;
+            background: #e8dfd1;
+            border-radius: 20px 20px 35px 35px;
+            border: 4px solid #5c300d;
+            box-shadow: inset 0 -5px 10px #302a25, 5px 8px 10px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        /* Asa de la jarra */
+        .handle {
+            position: absolute;
+            top: 30px;
+            right: -20px;
+            width: 20px;
+            height: 45px;
+            border: 6px solid #773601;
+            border-left: none;
+            border-radius: 0 30px 30px 0;
+        }
+
+        /* Café líquido dentro de la jarra (animado) */
+        .coffee-liquid {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 70%;
+            background: #4e1e08;
+            background: linear-gradient(135deg, #8b5e4a, #6b3f2a);
+            border-radius: 0 0 30px 30px;
+            animation: fillPulse 4s infinite alternate ease-in-out;
+            box-shadow: inset 0 5px 8px #b97c5e;
+        }
+
+        /* Espuma o vapor (animación) */
+        .steam {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+
+        .steam span {
+            display: block;
+            width: 12px;
+            height: 12px;
+            background: rgba(255,255,255,0.8);
+            border-radius: 50%;
+            filter: blur(3px);
+            animation: rise 2s infinite ease-in-out;
+        }
+
+        .steam span:nth-child(2) { animation-delay: 0.4s; width: 16px; height: 16px; }
+        .steam span:nth-child(3) { animation-delay: 0.8s; width: 10px; height: 10px; }
+
+
+        /* ===== ANIMACIONES ===== */
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.8; background-color: #ff6b6b; }
+            50% { transform: scale(1.1); opacity: 1; background-color: #ff8a8a; box-shadow: 0 0 10px #ff6b6b; }
+            100% { transform: scale(0.95); opacity: 0.8; background-color: #ff6b6b; }
+        }
+
+        @keyframes wave {
+            0% { height: 60%; }
+            50% { height: 70%; }
+            100% { height: 60%; }
+        }
+
+        @keyframes fillPulse {
+            0% { height: 60%; opacity: 0.9; }
+            100% { height: 80%; opacity: 1; }
+        }
+
+        @keyframes rise {
+            0% { transform: translateY(0) scale(1); opacity: 0.6; }
+            100% { transform: translateY(-35px) scale(1.5); opacity: 0; }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="machine">
+        <!-- Panel superior -->
+        <div class="top-panel">
+            <div class="power-btn"></div>
+            <div class="screen">Listo</div>
+            <div class="perilla"></div>
+        </div>
+
+        <!-- Cuerpo principal donde ocurre la magia -->
+        <div class="main-body">
+            <!-- Depósito de agua con nivel animado -->
+            <div class="water-tank">
+                <div class="water-level"></div>
+            </div>
+
+            <!-- Grupo de preparación (portafiltro) -->
+            <div class="group-head"></div>
+
+            <!-- Jarra con café animado -->
+            <div class="carafe">
+                <div class="coffee-liquid"></div>
+                <div class="handle"></div>
+            </div>
+
+            <!-- Vapor (animación) -->
+            <div class="steam">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
