@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página Responsiva</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      padding: 20px;
+      background-color: #f0f8ff;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    header, nav, section, footer {
+      background: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    header { text-align: center; background: #2c3e50; color: white; }
+    nav { background: #34495e; }
+    footer { text-align: center; background: #2c3e50; color: white; }
+    
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    
+    .content {
+      display: flex;
+      gap: 20px;
+    }
+    
+    .main-content { flex: 2; }
+    .sidebar { flex: 1; }
+    
+    img {
+      width: 100%;
+      border-radius: 8px;
+      margin: 15px 0;
+    }
+    
+    .btn {
+      display: inline-block;
+      background: #3498db;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      margin-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+      .content { flex-direction: column; }
+      nav ul { flex-direction: column; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Mi Aplicación Web</h1>
+      <p>Diseño responsivo y moderno</p>
+    </header>
+    
+    <nav>
+      <ul>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Servicios</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+    </nav>
+    
+    <div class="content">
+      <section class="main-content">
+        <h2>Contenido Principal</h2>
+        <p>Este es un ejemplo de página web responsiva que se adapta a diferentes tamaños de pantalla.</p>
+        
+        <img src="https://i.pinimg.com/736x/52/2e/6b/522e6bc1a11d1726a35f81cbd979395f.jpg" alt="Paisaje natural">
+        
+        <p>En pantallas grandes, el diseño tiene dos columnas. En dispositivos móviles, todo se apila verticalmente.</p>
+        <button class="btn">Aprender Más</button>
+      </section>
+      
+      <aside class="sidebar">
+        <h3>Barra Lateral</h3>
+        <p>Contenido adicional que se muestra al lado en pantallas grandes.</p>
+      </aside>
+    </div>
+    
+    <footer>
+      <p>&copy; Curso Full Stack 2026</p>
+    </footer>
+  </div>
+</body>
+</html>
