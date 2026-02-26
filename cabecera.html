@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo HTML y CSS en Cabecera</title>
+    <style>
+        body {
+            font-family: Helvetica, sans-serif;
+            background-color: #e7e2e2;
+            color: #d63434;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background-color: #6200ea;
+            color: white;
+            padding: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        main p {
+            font-size: 1.2em;
+            margin: 20px 0;
+            line-height: 1.6;
+        }
+
+        button {
+            background-color: #ce6016;
+            color: #d1ce1b;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 3.3s;
+        }
+
+        button:hover {
+            background-color: rgb(68, 68, 156);
+        }
+
+        footer {
+            background-color: #6200ea;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Bienvenido a mi Página</h1>
+    </header>
+
+    <main>
+        <p>
+            ¡Hola! Esta es una página de ejemplo diseñada con <strong>HTML5</strong> y estilos en la <strong>cabecera</strong>. Es simple, moderna y fácil de leer.
+        </p>
+
+        <button>Haz clic aquí</button>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Mi Página</p>
+    </footer>
+
+    <script>
+        document.querySelector('button').addEventListener('click', () => {
+            alert('¡Gracias por hacer clic!');
+        });
+    </script>
+
+</body>
+</html>
