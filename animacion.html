@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarjeta Giratoria Elegante</title>
+    <style>
+        /* Contenedor principal */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #f6d365, #fda085);
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Contenedor de la tarjeta */
+        .tarjeta {
+            width: 220px;
+            height: 320px;
+            perspective: 1200px; /* Proporciona la perspectiva 3D */
+            position: relative;
+        }
+
+        /* Cara de la tarjeta (frontal y trasera) */
+        .cara {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden; /* Oculta la cara trasera cuando no está visible */
+            transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1); /* Suaviza la rotación */
+            border-radius: 15px; /* Bordes redondeados */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Diseño de la cara frontal */
+        .cara-frontal {
+            background-image: url("/shared/image/fondo.jpg");
+            background-size: cover;
+            background-position: center;
+            /*background: linear-gradient(135deg, #6a11cb, #2575fc); /* Degradado azul y morado */
+            transform: rotateY(0deg); /* Por defecto visible */
+        }
+
+        /* Diseño de la cara trasera */
+        .cara-trasera {
+            background-image: url("/shared/image/fondo.jpg");
+            background-size: cover;
+            background-position: center;
+            /*background: linear-gradient(135deg, #ff6a00, #ee0979); /* Degradado naranja y rosado */
+            transform: rotateY(180deg); /* Por defecto oculta */
+        }
+
+        /* Contenedor que rota al pasar el ratón */
+        .tarjeta:hover .cara-frontal {
+            transform: rotateY(-180deg); /* Rota hacia atrás */
+        }
+
+        .tarjeta:hover .cara-trasera {
+            transform: rotateY(0deg); /* Rota hacia adelante */
+        }
+
+        /* Estilo del contenido dentro de las caras */
+        .cara h2 {
+            margin: 0;
+            font-size: 1.8rem;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .cara p {
+            margin-top: 0.5rem;
+            font-size: 1rem;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="tarjeta">
+        <!-- Cara frontal de la tarjeta -->
+        <div class="cara cara-frontal">
+            <div>
+                <h2>Bienvenido</h2>
+                <p>Pasa el ratón aquí</p>
+            </div>
+        </div>
+
+        <!-- Cara trasera de la tarjeta -->
+        <div class="cara cara-trasera">
+            <div>
+                <h2>¡Chau!</h2>
+                <p>Gracias por visitar</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

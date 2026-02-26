@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Minimalista</title>
+    <style>
+        /* Estilo global de la página */
+        body {
+            font-family: sans-serif; /* Fuente moderna y legible */
+            /*background-color: #92b3d4; /* Fondo suave */
+            background-image: url("/shared/image/fondo.jpg");
+            border-image-slice: fill;
+            display: flex; /* Usamos flexbox para centrar el contenido */
+            justify-content: center; /* Alineación horizontal */
+            align-items: center; /* Alineación vertical */
+            height: 105vh; /* Ocupa toda la altura de la ventana */
+            margin: 50px; /* Eliminamos los márgenes predeterminados */
+        }
+
+        /* Estilo del formulario */
+        form {
+            display: flex;
+            flex-direction: column; /* Coloca los elementos de forma vertical */
+            gap: 25px; /* Espacio entre los elementos */
+            width: 100%;
+            max-width: 320px; /* Limita el ancho máximo del formulario */
+            padding: 20px; /* Agrega algo de espacio alrededor del formulario */
+            background-color: rgb(245, 235, 243); /* Fondo blanco para el formulario */
+            border-radius: 10px; /* Bordes redondeados */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+        }
+
+        /* Estilo de las etiquetas */
+        label {
+            font-size: 16px; /* Aumentamos el tamaño de las letras para mejor legibilidad */
+            color: #4e5c74; /* Color del texto (gris oscuro) */
+            font-weight: bold; /* Hacemos las etiquetas en negrita */
+            transition: color 0.5s ease; /* Transición suave al cambiar de color */
+        }
+
+        /* Estilo de los inputs */
+        input {
+            padding: 12px; /* Espacio dentro del input */
+            border: 1px solid #d1d5db; /* Borde gris claro */
+            border-radius: 5px; /* Bordes redondeados */
+            font-size: 16px; /* Tamaño de texto legible */
+            outline: none; /* Eliminamos el borde de enfoque predeterminado */
+            transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+        }
+
+        /* Efecto cuando el input es válido o inválido */
+        input:valid {
+            border-color: green; /* Borde verde para inputs válidos */
+            box-shadow: 0 0 5px rgba(0, 128, 0, 0.4); /* Sombra verde suave */
+        }
+
+        input:invalid {
+            border-color: tomato; /* Borde rojo para inputs inválidos */
+            box-shadow: 0 0 5px rgba(255, 0, 0, 0.4); /* Sombra roja suave */
+        }
+
+        /* Estilo para el botón de envío */
+        input[type="submit"] {
+            background-color: #4CAF50; /* Color verde para el botón */
+            color: white; /* Texto blanco */
+            padding: 12px; /* Espacio dentro del botón */
+            border: none; /* Sin borde */
+            border-radius: 5px; /* Bordes redondeados */
+            cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+            font-size: 18px; /* Tamaño de texto */
+            transition: background-color 0.3s ease; /* Transición suave al pasar el cursor */
+        }
+
+        /* Efecto al pasar el cursor sobre el botón */
+        input[type="submit"]:hover {
+            background-color: #45a049; /* Un verde más oscuro */
+        }
+    </style>
+</head>
+<body>
+    <!-- Formulario -->
+    <form>
+        <label for="email">
+            Correo:
+            <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required>
+        </label>
+        <label for="edad">
+            Edad:
+            <input type="number" id="edad" name="edad" min="15" max="95" placeholder="15" required>
+        </label>
+        <input type="submit" value="verificar validaciones">
+    </form>
+</body>
+</html>
